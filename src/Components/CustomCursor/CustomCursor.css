@@ -31,3 +31,9 @@
   height: 60px !important;
   border-color: #ffffff;
 }
+@media (pointer: coarse) {
+  .cursor-dot,
+  .cursor-outline {
+    display: none !important;
+  }
+}
