@@ -1,0 +1,24 @@
+.card {
+  border-radius: 14px;
+  background-color: rgb(150, 147, 147);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  ;
+}
+
+.card:hover {
+  transform: translateY(6px);
+}
+.project {
+  font-size: 3rem;
+  font-weight: 700;
+  color: white;
+  text-align: right;
+    display: flex;
+  justify-content: flex-end;
+  margin-right: 20px;
+  margin-bottom: 50px;
+
+  
+  
+}
