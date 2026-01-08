@@ -23,11 +23,3 @@ body{
   backface-visibility: hidden;
   will-change: transform;
 }
-/* TEMP: make interactive things top layer and disable common overlays for diagnosis */
-body * { -webkit-tap-highlight-color: rgba(0,0,0,0.05); }
-a, button, input, select, textarea { pointer-events: auto !important; z-index: 99999 !important; position: relative !important; }
-.overlay, .modal-backdrop, .offcanvas, .menu-overlay {
-  /* visualize overlay; disable pointer handling temporarily to confirm */
-  
-  pointer-events: none !important;
-}

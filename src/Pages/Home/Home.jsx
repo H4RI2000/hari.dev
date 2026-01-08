@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import NavBar  from '../../Components/NavBar/NavBar'
+
 import Hero from '../../Components/Hero/Hero'
 import Experience from '../../Components/Experience/Experience'
 import Education from '../../Components/Education/Education'
@@ -20,7 +20,7 @@ function Home() {
 
       <div data-scroll-section>
         {/* The NavBar stays at the top */}
-        <NavBar />
+        
 
         {/* Give each section an ID that matches your Nav Links */}
         <div id="home">
