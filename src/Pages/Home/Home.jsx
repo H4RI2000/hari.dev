@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
-
+import NavBar  from '../../Components/NavBar/NavBar'
 import Hero from '../../Components/Hero/Hero'
 import Experience from '../../Components/Experience/Experience'
 import Education from '../../Components/Education/Education'
-
+import CustomCursor from '../../Components/CustomCursor/CustomCursor'
 import Certificates from '../../Components/Certificate/Certificate'
 import Skills from '../../Components/Skills/Skills'
 import ProjectsSection from '../../Components/Projects/Project'
@@ -17,10 +17,10 @@ import Footer from '../../Components/Footer/Footer'
 function Home() {
   return (
     <>
-
+      <CustomCursor />
       <div data-scroll-section>
         {/* The NavBar stays at the top */}
-        
+        <NavBar />
 
         {/* Give each section an ID that matches your Nav Links */}
         <div id="home">

@@ -1,56 +1,50 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import "./CustomCursor.css";
 
 const CustomCursor = () => {
   const cursorDot = useRef(null);
   const cursorOutline = useRef(null);
-  const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
-    const isTouchDevice =
-      window.matchMedia("(pointer: coarse)").matches ||
-      navigator.maxTouchPoints > 0;
-
-    if (isTouchDevice) return;
-
-    setEnabled(true);
-
     const dot = cursorDot.current;
     const outline = cursorOutline.current;
 
     let mouseX = 0;
     let mouseY = 0;
+
     let outlineX = 0;
     let outlineY = 0;
-    const speed = 0.05;
 
-    const move = (e) => {
+    const speed = 0.05; // slower = smoother
+
+    const handleMouseMove = (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
+
       dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
     };
 
-    const animate = () => {
+    const animateOutline = () => {
       outlineX += (mouseX - outlineX) * speed;
       outlineY += (mouseY - outlineY) * speed;
+
       outline.style.transform = `translate(${outlineX}px, ${outlineY}px)`;
-      requestAnimationFrame(animate);
+
+      requestAnimationFrame(animateOutline);
     };
 
-    window.addEventListener("mousemove", move);
-    requestAnimationFrame(animate);
+    requestAnimationFrame(animateOutline);
+    window.addEventListener("mousemove", handleMouseMove);
 
     return () => {
-      window.removeEventListener("mousemove", move);
+      window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
 
-  if (!enabled) return null;
-
   return (
     <>
-      <div className="cursor-dot" ref={cursorDot} />
-      <div className="cursor-outline" ref={cursorOutline} />
+      <div className="cursor-dot" ref={cursorDot}></div>
+      <div className="cursor-outline" ref={cursorOutline}></div>
     </>
   );
 };

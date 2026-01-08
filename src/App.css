@@ -17,9 +17,4 @@ body{
   font-family: 'poppins';
 }
 
-[data-scroll-container] {
-  perspective: 1px;
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-  will-change: transform;
-}
+
