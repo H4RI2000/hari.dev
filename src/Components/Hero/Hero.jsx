@@ -1,6 +1,6 @@
 import React from "react";
 import "./Hero.css";
-import profile from "../../assets/profile.png";
+import profile from "../../assets/Profile.png";
 import BlurText from "../../Blurtext/BlurText";
 
 function Hero() {
