@@ -1,23 +1,19 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./CustomCursor.css";
 
 const CustomCursor = () => {
   const cursorDot = useRef(null);
   const cursorOutline = useRef(null);
-
-  const [enabled, setEnabled] = useState(true);
+  const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
-    // Disable on touch devices (phones & tablets)
     const isTouchDevice =
-      "ontouchstart" in window ||
-      navigator.maxTouchPoints > 0 ||
-      window.matchMedia("(pointer: coarse)").matches;
+      window.matchMedia("(pointer: coarse)").matches ||
+      navigator.maxTouchPoints > 0;
 
-    if (isTouchDevice) {
-      setEnabled(false);
-      return;
-    }
+    if (isTouchDevice) return;
+
+    setEnabled(true);
 
     const dot = cursorDot.current;
     const outline = cursorOutline.current;
@@ -26,27 +22,26 @@ const CustomCursor = () => {
     let mouseY = 0;
     let outlineX = 0;
     let outlineY = 0;
-
     const speed = 0.05;
 
-    const handleMouseMove = (e) => {
+    const move = (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
       dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
     };
 
-    const animateOutline = () => {
+    const animate = () => {
       outlineX += (mouseX - outlineX) * speed;
       outlineY += (mouseY - outlineY) * speed;
       outline.style.transform = `translate(${outlineX}px, ${outlineY}px)`;
-      requestAnimationFrame(animateOutline);
+      requestAnimationFrame(animate);
     };
 
-    requestAnimationFrame(animateOutline);
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", move);
+    requestAnimationFrame(animate);
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mousemove", move);
     };
   }, []);
 
@@ -54,8 +49,8 @@ const CustomCursor = () => {
 
   return (
     <>
-      <div className="cursor-dot" ref={cursorDot}></div>
-      <div className="cursor-outline" ref={cursorOutline}></div>
+      <div className="cursor-dot" ref={cursorDot} />
+      <div className="cursor-outline" ref={cursorOutline} />
     </>
   );
 };

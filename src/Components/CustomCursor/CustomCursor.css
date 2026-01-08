@@ -1,3 +1,8 @@
+@media (pointer: fine) {
+  body {
+    cursor: none;
+  }
+}
 .cursor-dot,
 .cursor-outline {
   position: fixed;
