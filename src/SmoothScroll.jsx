@@ -13,9 +13,9 @@ const SmoothScroll = ({ children }) => {
     loco.current = new LocomotiveScroll({
       el: scrollRef.current,
       smooth: true,
-      lerp: 0.06,            // lower = smoother
+      lerp: 0.08,            // lower = smoother
       multiplier: 0.8,       // smooth speed
-      touchMultiplier: 2,    // smoother on mobile
+      touchMultiplier: 3,    // smoother on mobile
       reloadOnContextChange: true,
 
       smartphone: {
