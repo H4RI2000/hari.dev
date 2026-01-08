@@ -17,6 +17,7 @@ import Footer from '../../Components/Footer/Footer'
 function Home() {
   return (
     <>
+
       <div data-scroll-section>
         {/* The NavBar stays at the top */}
         <NavBar />
