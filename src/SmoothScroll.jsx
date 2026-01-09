@@ -19,11 +19,12 @@ const SmoothScroll = ({ children }) => {
       reloadOnContextChange: true,
 
       smartphone: {
-        smooth: true,
+        smooth: false,
         lerp: 0.08,
+        
       },
       tablet: {
-        smooth: true,
+        smooth: false,
         lerp: 0.07,
       },
     });
